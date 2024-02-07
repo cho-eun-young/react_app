@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+/* eslint-disable */
+
+import logo from "./logo.svg";
+import "./App.css";
+import { useState } from "react";
+import Header from "./component/Header";
+import DayList from "./component/DayList";
+import Day from "./component/Day";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import EmptyPage from "./component/EmptyPage";
+import CreateWord from "./component/CreateWord";
+import CreateDay from "./component/CreateDay";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Header />
+        <Routes>
+          <Route path="/" element={<DayList />}></Route>
+          <Route path="/day/:day" element={<Day />}></Route>
+          <Route path="/create_word" element={<CreateWord />}></Route>
+          <Route path="/create_days" element={<CreateDay />}></Route>
+          <Route path="*" element={<EmptyPage />}></Route>
+        </Routes>
+        {/* <Routes>
+          
+        </Routes> */}
+      </div>
+    </BrowserRouter>
   );
 }
 
